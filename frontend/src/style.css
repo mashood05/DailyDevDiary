@@ -53,16 +53,12 @@ h1 {
 }
 
 .app-icon {
-  display: grid;
-  width: 24px;
-  height: 24px;
-  place-items: center;
-  border-radius: 5px;
-  background: #0f2942;
-  color: #ffffff;
-  font-family: Consolas, monospace;
-  font-size: 11px;
-  font-weight: 600;
+  display: block;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  border-radius: 7px;
+  object-fit: cover;
 }
 
 .sidebar-body {

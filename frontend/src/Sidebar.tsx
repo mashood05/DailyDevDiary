@@ -15,6 +15,7 @@ import {
   X,
 } from "lucide-react";
 import { useState, type FormEvent } from "react";
+import appLogo from "./assets/images/logo.png";
 import type { Collection, Note } from "./data/diaryRepository";
 
 const menuItems = [
@@ -83,9 +84,7 @@ export function Sidebar({
     <aside className="sidebar">
       <header className="sidebar-header">
         <h1>
-          <span className="app-icon" aria-hidden="true">
-            &gt;_
-          </span>
+          <img className="app-icon" src={appLogo} alt="" />
           DailyDevDiary
         </h1>
         <button
