@@ -1,0 +1,29 @@
+# Private planning and design references
+images/
+instructions.md
+
+# Dependencies
+**/node_modules/
+
+# Build output
+frontend/dist/
+backend/target/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editors
+.idea/
+.vscode/
+*.swp
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
