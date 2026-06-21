@@ -31,7 +31,7 @@ export function FeatureRouter({
     case "commands":
       return <CommandsPage notes={notes} onOpenNote={onOpenNote} />;
     case "snapshots":
-      return <SnapshotsPage />;
+      return <SnapshotsPage notes={notes} onOpenNote={onOpenNote} />;
     case "trash":
       return <TrashPage />;
     default:
