@@ -780,6 +780,92 @@ button {
   height: 13px;
 }
 
+.trash-groups {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.trash-groups section {
+  overflow: hidden;
+  border: 1px solid #e1e7ee;
+  border-radius: 9px;
+}
+
+.trash-groups h3 {
+  height: 40px;
+  margin: 0;
+  padding: 0 14px;
+  border-bottom: 1px solid #e7ebf1;
+  background: #f8fafc;
+  color: #68768a;
+  font-size: 10px;
+  line-height: 40px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.trash-row {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px 8px 14px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.trash-row:last-child {
+  border-bottom: 0;
+}
+
+.trash-row > svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  color: #6d7b8c;
+}
+
+.trash-row > strong {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  color: #2c384b;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trash-row button {
+  display: flex;
+  height: 30px;
+  align-items: center;
+  gap: 6px;
+  padding: 0 9px;
+  border: 1px solid #dce3eb;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #5f6d7f;
+  font-size: 9px;
+}
+
+.trash-row button:hover {
+  background: #f4f7fa;
+}
+
+.trash-row button svg {
+  width: 12px;
+  height: 12px;
+}
+
+.trash-row .trash-delete-forever {
+  border-color: #f1d0d0;
+  color: #c43b3b;
+}
+
+.trash-row .trash-delete-forever:hover {
+  background: #fff3f3;
+}
+
 .feature-page-heading h2 {
   color: #182233;
   font-size: 22px;

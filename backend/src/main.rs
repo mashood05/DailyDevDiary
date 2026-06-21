@@ -8,7 +8,8 @@ fn main() {
             features::home::get_home_summary,
             features::all_notes::list_all_notes,
             features::commands::list_commands,
-            features::snapshots::list_snapshots
+            features::snapshots::list_snapshots,
+            features::trash::list_trash
         ])
         .run(tauri::generate_context!())
         .expect("error while running application");

@@ -2,6 +2,7 @@ export type Collection = {
   id: string;
   name: string;
   createdAt: string;
+  deletedAt: string | null;
 };
 
 export type ScreenshotAttachment = {
@@ -26,6 +27,7 @@ export type Note = {
   steps: SetupStep[];
   createdAt: string;
   updatedAt: string;
+  deletedAt: string | null;
 };
 
 export interface DiaryRepository {
@@ -33,10 +35,16 @@ export interface DiaryRepository {
   createCollection(name: string): Promise<Collection>;
   renameCollection(id: string, name: string): Promise<Collection>;
   deleteCollection(id: string): Promise<void>;
+  getDeletedCollections(): Promise<Collection[]>;
+  restoreCollection(id: string): Promise<void>;
+  permanentlyDeleteCollection(id: string): Promise<void>;
   getNotes(): Promise<Note[]>;
   createNote(collectionId: string): Promise<Note>;
   updateNote(note: Note): Promise<Note>;
   deleteNote(id: string): Promise<void>;
+  getDeletedNotes(): Promise<Note[]>;
+  restoreNote(id: string): Promise<void>;
+  permanentlyDeleteNote(id: string): Promise<void>;
 }
 
 export function createEmptyStep(): SetupStep {
@@ -64,7 +72,9 @@ export class InMemoryDiaryRepository implements DiaryRepository {
   private notes: Note[] = [];
 
   async getCollections() {
-    return this.collections.map((collection) => ({ ...collection }));
+    return this.collections
+      .filter((collection) => !collection.deletedAt)
+      .map((collection) => ({ ...collection }));
   }
 
   async createCollection(name: string) {
@@ -72,6 +82,7 @@ export class InMemoryDiaryRepository implements DiaryRepository {
       id: crypto.randomUUID(),
       name: name.trim(),
       createdAt: new Date().toISOString(),
+      deletedAt: null,
     };
 
     this.collections.push(collection);
@@ -88,12 +99,36 @@ export class InMemoryDiaryRepository implements DiaryRepository {
   }
 
   async deleteCollection(id: string) {
+    const collection = this.collections.find((item) => item.id === id);
+    if (collection) collection.deletedAt = new Date().toISOString();
+  }
+
+  async getDeletedCollections() {
+    return this.collections
+      .filter((collection) => collection.deletedAt)
+      .map((collection) => ({ ...collection }));
+  }
+
+  async restoreCollection(id: string) {
+    const collection = this.collections.find((item) => item.id === id);
+    if (collection) collection.deletedAt = null;
+  }
+
+  async permanentlyDeleteCollection(id: string) {
     this.collections = this.collections.filter((item) => item.id !== id);
     this.notes = this.notes.filter((note) => note.collectionId !== id);
   }
 
   async getNotes() {
-    return this.notes.map(cloneNote);
+    const activeCollectionIds = new Set(
+      this.collections
+        .filter((collection) => !collection.deletedAt)
+        .map((collection) => collection.id),
+    );
+
+    return this.notes
+      .filter((note) => !note.deletedAt && activeCollectionIds.has(note.collectionId))
+      .map(cloneNote);
   }
 
   async createNote(collectionId: string) {
@@ -106,6 +141,7 @@ export class InMemoryDiaryRepository implements DiaryRepository {
       steps: [createEmptyStep()],
       createdAt: now,
       updatedAt: now,
+      deletedAt: null,
     };
 
     this.notes.push(note);
@@ -127,6 +163,28 @@ export class InMemoryDiaryRepository implements DiaryRepository {
   }
 
   async deleteNote(id: string) {
+    const note = this.notes.find((item) => item.id === id);
+    if (note) note.deletedAt = new Date().toISOString();
+  }
+
+  async getDeletedNotes() {
+    const activeCollectionIds = new Set(
+      this.collections
+        .filter((collection) => !collection.deletedAt)
+        .map((collection) => collection.id),
+    );
+
+    return this.notes
+      .filter((note) => note.deletedAt && activeCollectionIds.has(note.collectionId))
+      .map(cloneNote);
+  }
+
+  async restoreNote(id: string) {
+    const note = this.notes.find((item) => item.id === id);
+    if (note) note.deletedAt = null;
+  }
+
+  async permanentlyDeleteNote(id: string) {
     this.notes = this.notes.filter((note) => note.id !== id);
   }
 }

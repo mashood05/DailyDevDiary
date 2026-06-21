@@ -15,6 +15,8 @@ function App() {
   const {
     collections,
     notes,
+    deletedCollections,
+    deletedNotes,
     collectionNotes,
     recentNotes,
     noteCounts,
@@ -31,6 +33,10 @@ function App() {
     createNote,
     updateNote,
     deleteNote,
+    restoreCollection,
+    permanentlyDeleteCollection,
+    restoreNote,
+    permanentlyDeleteNote,
   } = useDiary();
 
   return (
@@ -78,6 +84,12 @@ function App() {
             selectNote(noteId);
             setActiveFeature(null);
           }}
+          deletedCollections={deletedCollections}
+          deletedNotes={deletedNotes}
+          onRestoreCollection={restoreCollection}
+          onPermanentlyDeleteCollection={permanentlyDeleteCollection}
+          onRestoreNote={restoreNote}
+          onPermanentlyDeleteNote={permanentlyDeleteNote}
         />
       ) : (
         <CollectionWorkspace

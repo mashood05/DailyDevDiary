@@ -11,15 +11,24 @@ export function useDiary() {
   const saveTimers = useRef(new Map<string, number>());
   const [collections, setCollections] = useState<Collection[]>([]);
   const [notes, setNotes] = useState<Note[]>([]);
+  const [deletedCollections, setDeletedCollections] = useState<Collection[]>([]);
+  const [deletedNotes, setDeletedNotes] = useState<Note[]>([]);
   const [selectedCollectionId, setSelectedCollectionId] = useState<string | null>(null);
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null);
   const [saveStatus, setSaveStatus] = useState<"Saved" | "Saving...">("Saved");
 
   useEffect(() => {
-    Promise.all([repository.getCollections(), repository.getNotes()]).then(
-      ([storedCollections, storedNotes]) => {
+    Promise.all([
+      repository.getCollections(),
+      repository.getNotes(),
+      repository.getDeletedCollections(),
+      repository.getDeletedNotes(),
+    ]).then(
+      ([storedCollections, storedNotes, storedDeletedCollections, storedDeletedNotes]) => {
         setCollections(storedCollections);
         setNotes(storedNotes);
+        setDeletedCollections(storedDeletedCollections);
+        setDeletedNotes(storedDeletedNotes);
       },
     );
 
@@ -52,6 +61,8 @@ export function useDiary() {
     await repository.deleteCollection(id);
     setCollections(await repository.getCollections());
     setNotes(await repository.getNotes());
+    setDeletedCollections(await repository.getDeletedCollections());
+    setDeletedNotes(await repository.getDeletedNotes());
 
     if (selectedCollectionId === id) {
       setSelectedCollectionId(null);
@@ -83,12 +94,38 @@ export function useDiary() {
 
     const storedNotes = await repository.getNotes();
     setNotes(storedNotes);
+    setDeletedNotes(await repository.getDeletedNotes());
 
     if (selectedNoteId === id) {
       setSelectedNoteId(
         storedNotes.find((note) => note.collectionId === deletedNote?.collectionId)?.id ?? null,
       );
     }
+  }
+
+  async function restoreCollection(id: string) {
+    await repository.restoreCollection(id);
+    setCollections(await repository.getCollections());
+    setNotes(await repository.getNotes());
+    setDeletedCollections(await repository.getDeletedCollections());
+    setDeletedNotes(await repository.getDeletedNotes());
+  }
+
+  async function permanentlyDeleteCollection(id: string) {
+    await repository.permanentlyDeleteCollection(id);
+    setDeletedCollections(await repository.getDeletedCollections());
+    setDeletedNotes(await repository.getDeletedNotes());
+  }
+
+  async function restoreNote(id: string) {
+    await repository.restoreNote(id);
+    setNotes(await repository.getNotes());
+    setDeletedNotes(await repository.getDeletedNotes());
+  }
+
+  async function permanentlyDeleteNote(id: string) {
+    await repository.permanentlyDeleteNote(id);
+    setDeletedNotes(await repository.getDeletedNotes());
   }
 
   function updateNote(note: Note) {
@@ -134,6 +171,8 @@ export function useDiary() {
   return {
     collections,
     notes,
+    deletedCollections,
+    deletedNotes,
     collectionNotes,
     recentNotes,
     noteCounts,
@@ -150,5 +189,9 @@ export function useDiary() {
     createNote,
     updateNote,
     deleteNote,
+    restoreCollection,
+    permanentlyDeleteCollection,
+    restoreNote,
+    permanentlyDeleteNote,
   };
 }
