@@ -602,6 +602,106 @@ button {
   height: 14px;
 }
 
+.commands-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.command-record {
+  overflow: hidden;
+  border: 1px solid #e1e7ee;
+  border-radius: 9px;
+  background: #ffffff;
+}
+
+.command-record-heading {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px 9px 15px;
+}
+
+.command-record-heading strong,
+.command-record-heading small {
+  display: block;
+}
+
+.command-record-heading strong {
+  color: #273347;
+  font-size: 11px;
+}
+
+.command-record-heading small {
+  margin-top: 3px;
+  color: #8a96a5;
+  font-size: 9px;
+}
+
+.command-record-heading button {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: #f1f5f9;
+}
+
+.command-record-heading button:hover {
+  background: #e5ecf4;
+}
+
+.command-record-heading svg {
+  width: 14px;
+  height: 14px;
+}
+
+.command-record-code {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 12px;
+  background: #161b22;
+  color: #45c875;
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.command-record-code code {
+  min-width: 0;
+  flex: 1;
+  overflow-x: auto;
+  color: #e6edf3;
+  font-size: 11px;
+  white-space: pre-wrap;
+}
+
+.command-record-code button {
+  display: flex;
+  height: 30px;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  padding: 0 9px;
+  border: 1px solid #39414d;
+  border-radius: 6px;
+  background: #242b34;
+  color: #d7dee7;
+  font-size: 9px;
+}
+
+.command-record-code button:hover {
+  background: #303844;
+}
+
+.command-record-code button svg {
+  width: 13px;
+  height: 13px;
+}
+
 .feature-page-heading h2 {
   color: #182233;
   font-size: 22px;

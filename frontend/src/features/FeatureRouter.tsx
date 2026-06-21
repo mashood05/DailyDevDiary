@@ -29,7 +29,7 @@ export function FeatureRouter({
         />
       );
     case "commands":
-      return <CommandsPage />;
+      return <CommandsPage notes={notes} onOpenNote={onOpenNote} />;
     case "snapshots":
       return <SnapshotsPage />;
     case "trash":
