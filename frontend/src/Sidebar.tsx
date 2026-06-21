@@ -1,5 +1,4 @@
 import {
-  ArrowUpRight,
   Camera,
   FileText,
   Folder,
@@ -17,24 +16,26 @@ import {
 import { useState, type FormEvent } from "react";
 import appLogo from "./assets/images/logo.png";
 import type { Collection, Note } from "./data/diaryRepository";
+import type { FeatureKey } from "./features/types";
 
 const menuItems = [
-  { label: "Home", icon: Home, active: true },
-  { label: "All Notes", icon: FileText },
-  { label: "Commands", icon: SquareTerminal },
-  { label: "Snapshots", icon: Camera },
-  { label: "Templates", icon: ArrowUpRight },
-  { label: "Trash", icon: Trash2 },
-];
+  { id: "home", label: "Home", icon: Home },
+  { id: "all-notes", label: "All Notes", icon: FileText },
+  { id: "commands", label: "Commands", icon: SquareTerminal },
+  { id: "snapshots", label: "Snapshots", icon: Camera },
+  { id: "trash", label: "Trash", icon: Trash2 },
+] satisfies Array<{ id: FeatureKey; label: string; icon: typeof Home }>;
 
 type SidebarProps = {
   collections: Collection[];
   recentNotes: Note[];
   noteCounts: Record<string, number>;
+  activeFeature: FeatureKey | null;
   selectedCollectionId: string | null;
   selectedNoteId: string | null;
   onClose: () => void;
   onSelectCollection: (id: string) => void;
+  onSelectFeature: (feature: FeatureKey) => void;
   onSelectNote: (collectionId: string, noteId: string) => void;
   onCreateCollection: (name: string) => Promise<void>;
   onRenameCollection: (id: string, name: string) => Promise<void>;
@@ -45,10 +46,12 @@ export function Sidebar({
   collections,
   recentNotes,
   noteCounts,
+  activeFeature,
   selectedCollectionId,
   selectedNoteId,
   onClose,
   onSelectCollection,
+  onSelectFeature,
   onSelectNote,
   onCreateCollection,
   onRenameCollection,
@@ -105,14 +108,16 @@ export function Sidebar({
         </div>
 
         <nav className="main-menu" aria-label="Main menu">
-          {menuItems.map(({ label, icon: Icon, active }) => (
-            <div
-              className={`menu-item${active && !selectedCollectionId ? " active" : ""}`}
-              key={label}
+          {menuItems.map(({ id, label, icon: Icon }) => (
+            <button
+              className={`menu-item${activeFeature === id ? " active" : ""}`}
+              type="button"
+              key={id}
+              onClick={() => onSelectFeature(id)}
             >
               <Icon aria-hidden="true" />
               <span>{label}</span>
-            </div>
+            </button>
           ))}
         </nav>
 
