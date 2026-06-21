@@ -21,7 +21,13 @@ export function FeatureRouter({
 }: FeatureRouterProps) {
   switch (feature) {
     case "all-notes":
-      return <AllNotesPage />;
+      return (
+        <AllNotesPage
+          collections={collections}
+          notes={notes}
+          onOpenNote={onOpenNote}
+        />
+      );
     case "commands":
       return <CommandsPage />;
     case "snapshots":
