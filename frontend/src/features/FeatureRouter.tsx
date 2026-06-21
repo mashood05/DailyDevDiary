@@ -3,7 +3,7 @@ import { CommandsPage } from "./commands/CommandsPage";
 import { HomePage } from "./home/HomePage";
 import { SnapshotsPage } from "./snapshots/SnapshotsPage";
 import { TrashPage } from "./trash/TrashPage";
-import type { Collection, Note } from "../data/diaryRepository";
+import type { Collection, Note } from "../data/diaryTypes";
 import type { FeatureKey } from "./types";
 
 type FeatureRouterProps = {

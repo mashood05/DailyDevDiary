@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import appLogo from "./assets/images/logo.png";
-import type { Collection, Note } from "./data/diaryRepository";
+import type { Collection, Note } from "./data/diaryTypes";
 import type { FeatureKey } from "./features/types";
 
 const menuItems = [

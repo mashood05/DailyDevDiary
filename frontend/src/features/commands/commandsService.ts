@@ -1,4 +1,4 @@
-import type { Note } from "../../data/diaryRepository";
+import type { Note } from "../../data/diaryTypes";
 import { invokeFeature } from "../shared/invokeFeature";
 
 export type CommandRecord = {

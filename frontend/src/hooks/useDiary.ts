@@ -1,10 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  InMemoryDiaryRepository,
-  type Collection,
-  type DiaryRepository,
-  type Note,
-} from "../data/diaryRepository";
+import type { DiaryRepository } from "../data/diaryRepository";
+import { InMemoryDiaryRepository } from "../data/inMemoryDiaryRepository";
+import type { Collection, Note } from "../data/diaryTypes";
 
 export function useDiary() {
   const repository = useMemo<DiaryRepository>(() => new InMemoryDiaryRepository(), []);

@@ -1,6 +1,6 @@
 import { Check, Copy, ExternalLink, SquareTerminal } from "lucide-react";
 import { useEffect, useState } from "react";
-import type { Note } from "../../data/diaryRepository";
+import type { Note } from "../../data/diaryTypes";
 import { listCommands, type CommandRecord } from "./commandsService";
 
 type CommandsPageProps = {

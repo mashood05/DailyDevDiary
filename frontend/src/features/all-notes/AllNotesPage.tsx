@@ -1,6 +1,7 @@
 import { FileText, Files, ListChecks } from "lucide-react";
 import { useEffect, useState } from "react";
-import type { Collection, Note } from "../../data/diaryRepository";
+import type { Collection, Note } from "../../data/diaryTypes";
+import { orderByIds } from "../shared/orderByIds";
 import { listAllNoteIds } from "./allNotesService";
 
 type AllNotesPageProps = {
@@ -16,9 +17,7 @@ export function AllNotesPage({ collections, notes, onOpenNote }: AllNotesPagePro
     listAllNoteIds(notes).then(setOrderedIds);
   }, [notes]);
 
-  const orderedNotes = orderedIds
-    .map((id) => notes.find((note) => note.id === id))
-    .filter((note): note is Note => Boolean(note));
+  const orderedNotes = orderByIds(notes, orderedIds);
 
   return (
     <section className="content feature-page all-notes-page" data-feature-page="All Notes">

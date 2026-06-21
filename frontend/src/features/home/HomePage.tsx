@@ -1,6 +1,7 @@
 import { Camera, FileText, Folder, SquareTerminal } from "lucide-react";
 import { useEffect, useState } from "react";
-import type { Collection, Note } from "../../data/diaryRepository";
+import type { Collection, Note } from "../../data/diaryTypes";
+import { orderByIds } from "../shared/orderByIds";
 import { getHomeSummary, type HomeSummary } from "./homeService";
 
 type HomePageProps = {
@@ -30,9 +31,7 @@ export function HomePage({ collections, notes, onOpenNote }: HomePageProps) {
     { label: "Commands", value: summary.commandCount, icon: SquareTerminal },
     { label: "Snapshots", value: summary.snapshotCount, icon: Camera },
   ];
-  const recentNotes = summary.recentNoteIds
-    .map((id) => notes.find((note) => note.id === id))
-    .filter((note): note is Note => Boolean(note));
+  const recentNotes = orderByIds(notes, summary.recentNoteIds);
 
   return (
     <section className="content feature-page home-page" data-feature-page="Home">

@@ -1,6 +1,6 @@
 import { Camera, ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
-import type { Note } from "../../data/diaryRepository";
+import type { Note } from "../../data/diaryTypes";
 import { listSnapshots, type SnapshotRecord } from "./snapshotsService";
 
 type SnapshotsPageProps = {

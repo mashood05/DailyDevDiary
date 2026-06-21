@@ -1,6 +1,7 @@
 import { FileText, Folder, RotateCcw, Trash2, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import type { Collection, Note } from "../../data/diaryRepository";
+import type { Collection, Note } from "../../data/diaryTypes";
+import { orderByIds } from "../shared/orderByIds";
 import { listTrash, type TrashOrder } from "./trashService";
 
 type TrashPageProps = {
@@ -28,12 +29,8 @@ export function TrashPage({
     listTrash(collections, notes).then(setOrder);
   }, [collections, notes]);
 
-  const orderedCollections = order.collectionIds
-    .map((id) => collections.find((collection) => collection.id === id))
-    .filter((collection): collection is Collection => Boolean(collection));
-  const orderedNotes = order.noteIds
-    .map((id) => notes.find((note) => note.id === id))
-    .filter((note): note is Note => Boolean(note));
+  const orderedCollections = orderByIds(collections, order.collectionIds);
+  const orderedNotes = orderByIds(notes, order.noteIds);
   const total = orderedCollections.length + orderedNotes.length;
 
   return (

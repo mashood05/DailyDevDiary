@@ -1,5 +1,5 @@
 import { FilePlus2, FileText, FolderOpen, Plus, Trash2 } from "lucide-react";
-import type { Collection, Note } from "./data/diaryRepository";
+import type { Collection, Note } from "./data/diaryTypes";
 import { NoteEditor } from "./NoteEditor";
 
 type CollectionWorkspaceProps = {

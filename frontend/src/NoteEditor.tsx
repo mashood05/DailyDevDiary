@@ -3,7 +3,7 @@ import {
   createEmptyStep,
   type Note,
   type SetupStep,
-} from "./data/diaryRepository";
+} from "./data/diaryTypes";
 
 type NoteEditorProps = {
   note: Note;
