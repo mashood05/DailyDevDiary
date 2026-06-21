@@ -3,13 +3,22 @@ import { CommandsPage } from "./commands/CommandsPage";
 import { HomePage } from "./home/HomePage";
 import { SnapshotsPage } from "./snapshots/SnapshotsPage";
 import { TrashPage } from "./trash/TrashPage";
+import type { Collection, Note } from "../data/diaryRepository";
 import type { FeatureKey } from "./types";
 
 type FeatureRouterProps = {
   feature: FeatureKey;
+  collections: Collection[];
+  notes: Note[];
+  onOpenNote: (collectionId: string, noteId: string) => void;
 };
 
-export function FeatureRouter({ feature }: FeatureRouterProps) {
+export function FeatureRouter({
+  feature,
+  collections,
+  notes,
+  onOpenNote,
+}: FeatureRouterProps) {
   switch (feature) {
     case "all-notes":
       return <AllNotesPage />;
@@ -20,6 +29,8 @@ export function FeatureRouter({ feature }: FeatureRouterProps) {
     case "trash":
       return <TrashPage />;
     default:
-      return <HomePage />;
+      return (
+        <HomePage collections={collections} notes={notes} onOpenNote={onOpenNote} />
+      );
   }
 }

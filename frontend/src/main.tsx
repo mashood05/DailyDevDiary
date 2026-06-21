@@ -14,6 +14,7 @@ function App() {
   const [activeFeature, setActiveFeature] = useState<FeatureKey | null>("home");
   const {
     collections,
+    notes,
     collectionNotes,
     recentNotes,
     noteCounts,
@@ -68,7 +69,16 @@ function App() {
         </button>
       )}
       {activeFeature ? (
-        <FeatureRouter feature={activeFeature} />
+        <FeatureRouter
+          feature={activeFeature}
+          collections={collections}
+          notes={notes}
+          onOpenNote={(collectionId, noteId) => {
+            selectCollection(collectionId);
+            selectNote(noteId);
+            setActiveFeature(null);
+          }}
+        />
       ) : (
         <CollectionWorkspace
           collection={selectedCollection}

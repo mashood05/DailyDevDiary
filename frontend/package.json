@@ -4,6 +4,7 @@
     "build": "tsc && vite build"
   },
   "dependencies": {
+    "@tauri-apps/api": "latest",
     "@vitejs/plugin-react": "latest",
     "vite": "latest",
     "typescript": "latest",

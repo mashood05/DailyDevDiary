@@ -133,6 +133,7 @@ export function useDiary() {
 
   return {
     collections,
+    notes,
     collectionNotes,
     recentNotes,
     noteCounts,
