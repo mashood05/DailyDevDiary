@@ -79,31 +79,29 @@ function App() {
         <img className="title-bar-logo" src={appLogo} alt="" />
         <span className="title-bar-name">DailyDevDiary</span>
 
-        {appWindow && (
-          <div className="title-bar-controls">
-            <button
-              type="button"
-              aria-label="Minimize"
-              onClick={() => appWindow.minimize()}
-            >
-              <Minus aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              aria-label="Maximize"
-              onClick={() => appWindow.toggleMaximize()}
-            >
-              <Square aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              aria-label="Close"
-              onClick={() => appWindow.close()}
-            >
-              <X aria-hidden="true" />
-            </button>
-          </div>
-        )}
+        <div className="title-bar-controls">
+          <button
+            type="button"
+            aria-label="Minimize"
+            onClick={() => appWindow?.minimize()}
+          >
+            <Minus aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            aria-label="Maximize"
+            onClick={() => appWindow?.toggleMaximize()}
+          >
+            <Square aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            aria-label="Close"
+            onClick={() => appWindow?.close()}
+          >
+            <X aria-hidden="true" />
+          </button>
+        </div>
       </header>
 
       <main className="app-shell">

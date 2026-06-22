@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { DiaryRepository } from "../data/diaryRepository";
-import { InMemoryDiaryRepository } from "../data/inMemoryDiaryRepository";
+import { SqliteDiaryRepository } from "../data/sqliteDiaryRepository";
 import type { Collection, Note } from "../data/diaryTypes";
 
 export function useDiary() {
-  const repository = useMemo<DiaryRepository>(() => new InMemoryDiaryRepository(), []);
+  const repository = useMemo<DiaryRepository>(() => new SqliteDiaryRepository(), []);
   const saveTimers = useRef(new Map<string, number>());
   const [collections, setCollections] = useState<Collection[]>([]);
   const [notes, setNotes] = useState<Note[]>([]);

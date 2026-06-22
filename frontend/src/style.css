@@ -91,6 +91,7 @@ body {
   border: 0;
   border-radius: 4px;
   background: transparent;
+  -webkit-app-region: no-drag;
 }
 
 .title-bar-controls button:hover {

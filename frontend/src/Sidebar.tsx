@@ -105,7 +105,6 @@ export function Sidebar({
         <section className="sidebar-section">
           <div className="section-heading">
             <span>Recent Notes</span>
-            <Plus aria-hidden="true" />
           </div>
           {recentNotes.length === 0 && <p className="recent-empty">No recent notes</p>}
           {recentNotes.map((note) => (

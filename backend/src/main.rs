@@ -4,6 +4,7 @@ mod features;
 
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_sql::Builder::default().build())
         .invoke_handler(tauri::generate_handler![
             features::home::get_home_summary,
             features::all_notes::list_all_notes,

@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "@tauri-apps/api": "latest",
+    "@tauri-apps/plugin-sql": "latest",
     "@vitejs/plugin-react": "latest",
     "vite": "latest",
     "typescript": "latest",
