@@ -3,7 +3,6 @@ import {
   FileText,
   Folder,
   Home,
-  PanelLeftClose,
   Pencil,
   Plus,
   Search,
@@ -14,7 +13,6 @@ import {
   X,
 } from "lucide-react";
 import { useState, type FormEvent } from "react";
-import appLogo from "./assets/images/logo.png";
 import type { Collection, Note } from "./data/diaryTypes";
 import type { FeatureKey } from "./features/types";
 
@@ -33,7 +31,6 @@ type SidebarProps = {
   activeFeature: FeatureKey | null;
   selectedCollectionId: string | null;
   selectedNoteId: string | null;
-  onClose: () => void;
   onSelectCollection: (id: string) => void;
   onSelectFeature: (feature: FeatureKey) => void;
   onSelectNote: (collectionId: string, noteId: string) => void;
@@ -49,7 +46,6 @@ export function Sidebar({
   activeFeature,
   selectedCollectionId,
   selectedNoteId,
-  onClose,
   onSelectCollection,
   onSelectFeature,
   onSelectNote,
@@ -85,21 +81,6 @@ export function Sidebar({
 
   return (
     <aside className="sidebar">
-      <header className="sidebar-header">
-        <h1>
-          <img className="app-icon" src={appLogo} alt="" />
-          DailyDevDiary
-        </h1>
-        <button
-          className="toggle-button"
-          type="button"
-          aria-label="Close sidebar"
-          onClick={onClose}
-        >
-          <PanelLeftClose aria-hidden="true" />
-        </button>
-      </header>
-
       <div className="sidebar-body">
         <div className="search-box">
           <Search aria-hidden="true" />

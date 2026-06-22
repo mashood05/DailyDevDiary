@@ -1,7 +1,7 @@
 html,
 body,
 #root,
-.app-shell {
+.app-root {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -18,10 +18,93 @@ body {
   font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
 }
 
+.app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
 .app-shell {
   display: flex;
+  min-height: 0;
+  flex: 1;
   overflow: hidden;
   background: #ffffff;
+}
+
+.title-bar {
+  display: flex;
+  height: 40px;
+  flex: 0 0 40px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 6px 0 10px;
+  background: #f8fafc;
+  user-select: none;
+}
+
+.title-bar-toggle {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+}
+
+.title-bar-toggle:hover {
+  background: #e3e8ef;
+}
+
+.title-bar-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+.title-bar-logo {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+}
+
+.title-bar-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.title-bar-controls {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.title-bar-controls button {
+  display: grid;
+  width: 32px;
+  height: 28px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.title-bar-controls button:hover {
+  background: #e3e8ef;
+}
+
+.title-bar-controls button:last-child:hover {
+  background: #e81123;
+  color: #ffffff;
+}
+
+.title-bar-controls svg {
+  width: 14px;
+  height: 14px;
 }
 
 .sidebar {
@@ -31,34 +114,6 @@ body {
   height: 100%;
   border-right: 1px solid #e6ebf2;
   background: #f8fafc;
-}
-
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 58px;
-  flex: 0 0 58px;
-  padding: 0 12px 0 18px;
-}
-
-h1 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0;
-  font-size: 16px;
-  font-weight: 650;
-  letter-spacing: -0.2px;
-}
-
-.app-icon {
-  display: block;
-  width: 28px;
-  height: 28px;
-  flex: 0 0 auto;
-  border-radius: 7px;
-  object-fit: cover;
 }
 
 .sidebar-body {
@@ -397,38 +452,10 @@ button {
   cursor: pointer;
 }
 
-.toggle-button,
-.open-button {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  flex: 0 0 auto;
-  place-items: center;
-  padding: 0;
-  border: 0;
-  border-radius: 8px;
-  background: transparent;
-}
-
-.toggle-button:hover,
-.open-button:hover {
-  background: #eef2f7;
-}
-
-.open-button {
-  position: absolute;
-  top: 20px;
-  left: 18px;
-  z-index: 1;
-  border: 1px solid #e2e8f0;
-  background: #ffffff;
-  box-shadow: 0 2px 8px rgb(15 23 42 / 8%);
-}
-
-.toggle-button svg,
-.open-button svg {
-  width: 20px;
-  height: 20px;
+.main-area {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
 }
 
 .content {
