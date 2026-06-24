@@ -1985,6 +1985,17 @@ button {
   background: #16243b;
 }
 
+.app-theme-dark .section-action {
+  background: transparent;
+  color: #b9c8dc;
+}
+
+.app-theme-dark .section-action:hover,
+.app-theme-dark .section-action:focus-visible {
+  background: #20314f;
+  color: #eef5ff;
+}
+
 .app-theme-dark .collection-form input {
   background: transparent;
   color: #eef5ff;
@@ -2254,6 +2265,17 @@ button {
   .app-theme-system .collection-form {
     border-color: #38527a;
     background: #16243b;
+  }
+
+  .app-theme-system .section-action {
+    background: transparent;
+    color: #b9c8dc;
+  }
+
+  .app-theme-system .section-action:hover,
+  .app-theme-system .section-action:focus-visible {
+    background: #20314f;
+    color: #eef5ff;
   }
 
   .app-theme-system .collection-form input {
