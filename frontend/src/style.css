@@ -1993,7 +1993,8 @@ button {
 
 .app-theme-dark .collection-form button,
 .app-theme-dark .collection-actions button,
-.app-theme-dark .delete-note-button {
+.app-theme-dark .delete-note-button,
+.app-theme-dark .step-actions button {
   border: 1px solid #314665;
   background: #20314f;
   color: #dbe8f8;
@@ -2001,8 +2002,20 @@ button {
 
 .app-theme-dark .collection-form button:hover,
 .app-theme-dark .collection-actions button:hover,
-.app-theme-dark .delete-note-button:hover {
+.app-theme-dark .delete-note-button:hover,
+.app-theme-dark .step-actions button:hover {
   background: #2b4268;
+}
+
+.app-theme-dark .step-actions button:last-child {
+  border-color: #653044;
+  background: #2a2032;
+  color: #ff9b9b;
+}
+
+.app-theme-dark .step-actions button:last-child:hover {
+  background: #44202a;
+  color: #ffc1c1;
 }
 
 .app-theme-dark .note-item.selected,
@@ -2037,8 +2050,14 @@ button {
 }
 
 .app-theme-dark .step-card:focus-within {
-  border-color: #4777bd;
-  box-shadow: 0 0 0 3px rgb(47 125 240 / 16%);
+  border-color: #395986;
+  box-shadow: 0 0 0 3px rgb(47 125 240 / 10%);
+}
+
+.app-theme-dark .command-input-wrap > span,
+.app-theme-dark .steps-heading,
+.app-theme-dark .notes-panel-title {
+  color: #91a7c4;
 }
 
 .app-theme-dark .trash-groups h3 {
@@ -2223,7 +2242,8 @@ button {
 
   .app-theme-system .collection-form button,
   .app-theme-system .collection-actions button,
-  .app-theme-system .delete-note-button {
+  .app-theme-system .delete-note-button,
+  .app-theme-system .step-actions button {
     border: 1px solid #314665;
     background: #20314f;
     color: #dbe8f8;
@@ -2231,8 +2251,20 @@ button {
 
   .app-theme-system .collection-form button:hover,
   .app-theme-system .collection-actions button:hover,
-  .app-theme-system .delete-note-button:hover {
+  .app-theme-system .delete-note-button:hover,
+  .app-theme-system .step-actions button:hover {
     background: #2b4268;
+  }
+
+  .app-theme-system .step-actions button:last-child {
+    border-color: #653044;
+    background: #2a2032;
+    color: #ff9b9b;
+  }
+
+  .app-theme-system .step-actions button:last-child:hover {
+    background: #44202a;
+    color: #ffc1c1;
   }
 
   .app-theme-system .note-item.selected,
@@ -2267,8 +2299,14 @@ button {
   }
 
   .app-theme-system .step-card:focus-within {
-    border-color: #4777bd;
-    box-shadow: 0 0 0 3px rgb(47 125 240 / 16%);
+    border-color: #395986;
+    box-shadow: 0 0 0 3px rgb(47 125 240 / 10%);
+  }
+
+  .app-theme-system .command-input-wrap > span,
+  .app-theme-system .steps-heading,
+  .app-theme-system .notes-panel-title {
+    color: #91a7c4;
   }
 
   .app-theme-system .trash-groups h3 {
