@@ -11,6 +11,8 @@
 
 **Fast · Private · Offline-first · No account required**
 
+[![Download](https://img.shields.io/badge/Download-v0.1.0-2ea44f?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/mashood05/DailyDevDiary/releases/latest)
+
 </div>
 
 ---
@@ -29,13 +31,24 @@ Instead of solving the same problem from scratch, open your diary and pick up ex
 | ✍️ **Inline editing** | Read and edit on the same page with a Notion-style experience. |
 | 🧩 **Setup steps** | Build ordered guides with a title, command, and explanation for every step. |
 | 🖼️ **Screenshots** | Attach multiple image references directly to individual setup steps. |
-| 💾 **Autosave** | Changes are saved automatically to the current in-memory store. |
+| 📋 **One-click copy** | Browse every command across your notes and copy with a single click. |
+| 🗂️ **Focused views** | Home dashboard, All Notes, Commands, and Snapshots collect your work in one place. |
+| 🗑️ **Trash** | Soft-delete notes and collections, then restore or permanently remove them. |
+| 🎨 **Preferences** | Light, dark, or system theme, default sidebar state, and editor font size. |
+| 💾 **Persistent storage** | Everything is saved locally to SQLite and survives restarts. |
 | 🖥️ **Desktop-first** | A clean native desktop shell powered by Tauri and Rust. |
 
-> [!IMPORTANT]
-> The project currently uses in-memory storage. Collections, notes, and screenshots reset when the app restarts. SQLite persistence is planned next.
+## Download
 
-## Quick start
+Grab the latest Windows installer from the [**Releases page**](https://github.com/mashood05/DailyDevDiary/releases/latest):
+
+1. Download `DailyDevDiary_0.1.0_x64-setup.exe`.
+2. Run it and follow the installer.
+
+> [!NOTE]
+> The installer is not code-signed yet, so Windows SmartScreen may show a warning. Click **More info → Run anyway** to continue.
+
+## Build from source
 
 ### Prerequisites
 
@@ -43,7 +56,7 @@ Instead of solving the same problem from scratch, open your diary and pick up ex
 - [Rust](https://www.rust-lang.org/tools/install)
 - Microsoft Edge WebView2 on Windows
 
-### Install and run
+### Run in development
 
 ```powershell
 git clone https://github.com/mashood05/DailyDevDiary.git
@@ -59,18 +72,32 @@ npm run dev
 
 Keep the terminal open while using the app. Press `Ctrl + C` to stop it.
 
+### Build an installer
+
+```powershell
+cd backend
+npx tauri build
+```
+
+The installer is written to `backend/target/release/bundle/nsis/`.
+
 ## Project structure
 
 ```text
 DailyDevDiary/
 ├── frontend/              React and TypeScript interface
 │   └── src/
-│       ├── data/          Storage contracts and in-memory repository
+│       ├── data/          Storage contracts, in-memory and SQLite repositories
+│       ├── features/      Isolated features: home, all-notes, commands,
+│       │                  snapshots, trash, settings, and shared pieces
 │       ├── hooks/         Application state and autosave behavior
-│       └── *.tsx          Sidebar, workspace, and inline editor
+│       └── *.tsx          Title bar, sidebar, workspace, and inline editor
 └── backend/               Tauri and Rust desktop application
-    ├── capabilities/      Desktop permissions
-    └── src/               Rust entry point
+    ├── capabilities/      Desktop and window permissions
+    ├── icons/             Application icons
+    └── src/
+        ├── features/      Per-feature backend modules
+        └── main.rs        Rust entry point
 ```
 
 ## Architecture
@@ -82,25 +109,30 @@ React interface
       ↓
 Application hooks
       ↓
-DiaryRepository
+DiaryRepository (contract)
       ↓
-In-memory store → SQLite store (planned)
+SQLite store (default) · In-memory store (fallback)
 ```
 
-This keeps the current prototype simple while allowing persistence to be added without rewriting the editor UI.
+Data is persisted locally with SQLite, so notes, collections, and screenshots
+survive restarts. The repository contract keeps the storage layer swappable
+without rewriting the editor UI.
 
 ## Roadmap
 
-- [x] Desktop application shell
+- [x] Desktop application shell with custom title bar
 - [x] Collections and notes
 - [x] Notion-style inline editor
 - [x] Ordered command steps
-- [x] In-memory screenshot attachments
-- [ ] SQLite persistence
+- [x] Screenshot attachments
+- [x] SQLite persistence
+- [x] One-click command copying
+- [x] Snapshots view
+- [x] Trash with restore and permanent delete
+- [x] Theme and editor preferences
 - [ ] Search, tags, and filters
 - [ ] CodeMirror-powered code editing
-- [ ] One-click command copying
-- [ ] Snapshots and reusable templates
+- [ ] Reusable templates
 
 ## Development principles
 
