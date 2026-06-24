@@ -117,7 +117,35 @@ export class SqliteDiaryRepository implements DiaryRepository {
 
   async permanentlyDeleteCollection(id: string): Promise<void> {
     const db = await this.getDb();
-    await db.execute("DELETE FROM collections WHERE id = $1", [id]);
+    await db.execute("BEGIN");
+
+    try {
+      await db.execute(
+        `DELETE FROM screenshots
+         WHERE step_id IN (
+           SELECT s.id
+           FROM steps s
+           JOIN notes n ON n.id = s.note_id
+           WHERE n.collection_id = $1
+         )`,
+        [id],
+      );
+      await db.execute(
+        `DELETE FROM steps
+         WHERE note_id IN (
+           SELECT id
+           FROM notes
+           WHERE collection_id = $1
+         )`,
+        [id],
+      );
+      await db.execute("DELETE FROM notes WHERE collection_id = $1", [id]);
+      await db.execute("DELETE FROM collections WHERE id = $1", [id]);
+      await db.execute("COMMIT");
+    } catch (error) {
+      await db.execute("ROLLBACK");
+      throw error;
+    }
   }
 
   async getNotes(): Promise<Note[]> {
@@ -336,7 +364,25 @@ export class SqliteDiaryRepository implements DiaryRepository {
 
   async permanentlyDeleteNote(id: string): Promise<void> {
     const db = await this.getDb();
-    await db.execute("DELETE FROM notes WHERE id = $1", [id]);
+    await db.execute("BEGIN");
+
+    try {
+      await db.execute(
+        `DELETE FROM screenshots
+         WHERE step_id IN (
+           SELECT id
+           FROM steps
+           WHERE note_id = $1
+         )`,
+        [id],
+      );
+      await db.execute("DELETE FROM steps WHERE note_id = $1", [id]);
+      await db.execute("DELETE FROM notes WHERE id = $1", [id]);
+      await db.execute("COMMIT");
+    } catch (error) {
+      await db.execute("ROLLBACK");
+      throw error;
+    }
   }
 }
 

@@ -110,6 +110,7 @@ export function useDiary() {
 
   async function permanentlyDeleteCollection(id: string) {
     await repository.permanentlyDeleteCollection(id);
+    setNotes(await repository.getNotes());
     setDeletedCollections(await repository.getDeletedCollections());
     setDeletedNotes(await repository.getDeletedNotes());
   }

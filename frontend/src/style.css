@@ -454,14 +454,18 @@ button {
 }
 
 .main-area {
+  display: flex;
   min-width: 0;
   flex: 1;
+  flex-direction: column;
   overflow: hidden;
 }
 
 .content {
   min-width: 0;
   flex: 1;
+  height: 100%;
+  min-height: 0;
   overflow: hidden;
   background: #ffffff;
 }
@@ -1106,17 +1110,20 @@ button {
 
 .collection-workspace {
   display: flex;
+  min-height: 0;
   flex-direction: column;
+  background: #f8fafc;
 }
 
 .workspace-header {
   display: flex;
-  height: 72px;
-  flex: 0 0 72px;
+  height: 78px;
+  flex: 0 0 78px;
   align-items: center;
   justify-content: space-between;
-  padding: 0 28px;
+  padding: 0 28px 0 30px;
   border-bottom: 1px solid #e7ebf1;
+  background: #ffffff;
 }
 
 .workspace-header > div {
@@ -1182,15 +1189,17 @@ button {
   display: flex;
   min-height: 0;
   flex: 1;
+  overflow: hidden;
 }
 
 .notes-panel {
-  width: 220px;
-  flex: 0 0 220px;
+  width: 260px;
+  flex: 0 0 260px;
+  min-height: 0;
   overflow-y: auto;
-  padding: 16px 10px;
+  padding: 18px 12px;
   border-right: 1px solid #e7ebf1;
-  background: #fbfcfe;
+  background: #fbfcff;
 }
 
 .notes-panel-title {
@@ -1306,9 +1315,12 @@ button {
 }
 
 .note-page {
+  display: flex;
   position: relative;
   min-width: 0;
+  min-height: 0;
   flex: 1;
+  flex-direction: column;
   overflow-y: auto;
   background: #ffffff;
 }
@@ -1348,9 +1360,11 @@ button {
 
 .note-placeholder {
   display: grid;
-  height: 100%;
+  min-height: 0;
+  flex: 1;
   place-content: center;
   justify-items: center;
+  padding: 40px;
   color: #8a97a8;
   text-align: center;
 }
