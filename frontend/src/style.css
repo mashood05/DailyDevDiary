@@ -878,7 +878,7 @@ button {
   border-bottom: 1px solid #edf0f4;
 }
 
-.trash-row:last-child {
+.trash-row-wrap:last-child .trash-row {
   border-bottom: 0;
 }
 
@@ -916,6 +916,11 @@ button {
   background: #f4f7fa;
 }
 
+.trash-row button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
 .trash-row button svg {
   width: 12px;
   height: 12px;
@@ -928,6 +933,12 @@ button {
 
 .trash-row .trash-delete-forever:hover {
   background: #fff3f3;
+}
+
+.trash-row-error {
+  margin: -2px 14px 10px 40px;
+  color: #c43b3b;
+  font-size: 10px;
 }
 
 .feature-page-heading h2 {
@@ -1965,6 +1976,112 @@ button {
   color: #a9b8ca;
 }
 
+.app-theme-dark .collection-form {
+  border-color: #38527a;
+  background: #16243b;
+}
+
+.app-theme-dark .collection-form input {
+  background: transparent;
+  color: #eef5ff;
+}
+
+.app-theme-dark .collection-form input::placeholder,
+.app-theme-dark .search-box input::placeholder {
+  color: #7f91aa;
+}
+
+.app-theme-dark .collection-form button,
+.app-theme-dark .collection-actions button,
+.app-theme-dark .delete-note-button {
+  border: 1px solid #314665;
+  background: #20314f;
+  color: #dbe8f8;
+}
+
+.app-theme-dark .collection-form button:hover,
+.app-theme-dark .collection-actions button:hover,
+.app-theme-dark .delete-note-button:hover {
+  background: #2b4268;
+}
+
+.app-theme-dark .note-item.selected,
+.app-theme-dark .note-item:hover {
+  background: #263a5d;
+  color: #e8f1ff;
+}
+
+.app-theme-dark .note-item strong,
+.app-theme-dark .workspace-note-select strong,
+.app-theme-dark .collection-select span {
+  color: #f2f7ff;
+}
+
+.app-theme-dark .note-item span,
+.app-theme-dark .collection-select small {
+  color: #9fb0c7;
+}
+
+.app-theme-dark .workspace-note-item.selected,
+.app-theme-dark .workspace-note-item:hover {
+  background: #29436c;
+}
+
+.app-theme-dark .step-heading input,
+.app-theme-dark .command-input-wrap textarea {
+  color: #edf6ff;
+}
+
+.app-theme-dark .step-card {
+  box-shadow: 0 0 0 1px rgb(70 109 164 / 20%);
+}
+
+.app-theme-dark .step-card:focus-within {
+  border-color: #4777bd;
+  box-shadow: 0 0 0 3px rgb(47 125 240 / 16%);
+}
+
+.app-theme-dark .trash-groups h3 {
+  border-color: #27364d;
+  background: #121f34;
+  color: #9fb0c7;
+}
+
+.app-theme-dark .trash-row {
+  border-color: #27364d;
+}
+
+.app-theme-dark .trash-row > strong {
+  color: #edf6ff;
+}
+
+.app-theme-dark .trash-row > svg {
+  color: #9fb0c7;
+}
+
+.app-theme-dark .trash-row button {
+  border-color: #314665;
+  background: #17233a;
+  color: #dbe8f8;
+}
+
+.app-theme-dark .trash-row button:hover {
+  background: #223654;
+}
+
+.app-theme-dark .trash-row .trash-delete-forever {
+  border-color: #743737;
+  color: #ff9b9b;
+}
+
+.app-theme-dark .trash-row .trash-delete-forever:hover {
+  background: #44202a;
+}
+
+.app-theme-dark .trash-row-error {
+  color: #ff9b9b;
+}
+
 @media (prefers-color-scheme: dark) {
   .app-theme-system {
     background: #0f172a;
@@ -2087,5 +2204,111 @@ button {
   .app-theme-system .attach-screenshot-button {
     background: #17233a;
     color: #a9b8ca;
+  }
+
+  .app-theme-system .collection-form {
+    border-color: #38527a;
+    background: #16243b;
+  }
+
+  .app-theme-system .collection-form input {
+    background: transparent;
+    color: #eef5ff;
+  }
+
+  .app-theme-system .collection-form input::placeholder,
+  .app-theme-system .search-box input::placeholder {
+    color: #7f91aa;
+  }
+
+  .app-theme-system .collection-form button,
+  .app-theme-system .collection-actions button,
+  .app-theme-system .delete-note-button {
+    border: 1px solid #314665;
+    background: #20314f;
+    color: #dbe8f8;
+  }
+
+  .app-theme-system .collection-form button:hover,
+  .app-theme-system .collection-actions button:hover,
+  .app-theme-system .delete-note-button:hover {
+    background: #2b4268;
+  }
+
+  .app-theme-system .note-item.selected,
+  .app-theme-system .note-item:hover {
+    background: #263a5d;
+    color: #e8f1ff;
+  }
+
+  .app-theme-system .note-item strong,
+  .app-theme-system .workspace-note-select strong,
+  .app-theme-system .collection-select span {
+    color: #f2f7ff;
+  }
+
+  .app-theme-system .note-item span,
+  .app-theme-system .collection-select small {
+    color: #9fb0c7;
+  }
+
+  .app-theme-system .workspace-note-item.selected,
+  .app-theme-system .workspace-note-item:hover {
+    background: #29436c;
+  }
+
+  .app-theme-system .step-heading input,
+  .app-theme-system .command-input-wrap textarea {
+    color: #edf6ff;
+  }
+
+  .app-theme-system .step-card {
+    box-shadow: 0 0 0 1px rgb(70 109 164 / 20%);
+  }
+
+  .app-theme-system .step-card:focus-within {
+    border-color: #4777bd;
+    box-shadow: 0 0 0 3px rgb(47 125 240 / 16%);
+  }
+
+  .app-theme-system .trash-groups h3 {
+    border-color: #27364d;
+    background: #121f34;
+    color: #9fb0c7;
+  }
+
+  .app-theme-system .trash-row {
+    border-color: #27364d;
+  }
+
+  .app-theme-system .trash-row > strong {
+    color: #edf6ff;
+  }
+
+  .app-theme-system .trash-row > svg {
+    color: #9fb0c7;
+  }
+
+  .app-theme-system .trash-row button {
+    border-color: #314665;
+    background: #17233a;
+    color: #dbe8f8;
+  }
+
+  .app-theme-system .trash-row button:hover {
+    background: #223654;
+  }
+
+  .app-theme-system .trash-row .trash-delete-forever {
+    border-color: #743737;
+    color: #ff9b9b;
+  }
+
+  .app-theme-system .trash-row .trash-delete-forever:hover {
+    background: #44202a;
+  }
+
+  .app-theme-system .trash-row-error {
+    color: #ff9b9b;
   }
 }

@@ -13,4 +13,3 @@ export const defaultPreferences: AppPreferences = {
   sidebarDefault: "open",
   editorFontSize: "medium",
 };
-

@@ -99,23 +99,49 @@ type TrashRowProps = {
 };
 
 function TrashRow({ icon: Icon, name, kind, onRestore, onDelete }: TrashRowProps) {
+  const [status, setStatus] = useState<"idle" | "restoring" | "deleting">("idle");
+  const [error, setError] = useState("");
+  const isBusy = status !== "idle";
+
+  async function runAction(action: "restoring" | "deleting", callback: () => Promise<void>) {
+    setStatus(action);
+    setError("");
+
+    try {
+      await callback();
+    } catch (caughtError) {
+      setError(caughtError instanceof Error ? caughtError.message : "Action failed.");
+    } finally {
+      setStatus("idle");
+    }
+  }
+
   return (
-    <article className="trash-row">
-      <Icon aria-hidden="true" />
-      <strong>{name}</strong>
-      <button type="button" aria-label={`Restore ${kind} ${name}`} onClick={onRestore}>
-        <RotateCcw aria-hidden="true" />
-        Restore
-      </button>
-      <button
-        className="trash-delete-forever"
-        type="button"
-        aria-label={`Permanently delete ${kind} ${name}`}
-        onClick={onDelete}
-      >
-        <X aria-hidden="true" />
-        Delete forever
-      </button>
+    <article className="trash-row-wrap">
+      <div className="trash-row">
+        <Icon aria-hidden="true" />
+        <strong>{name}</strong>
+        <button
+          type="button"
+          aria-label={`Restore ${kind} ${name}`}
+          disabled={isBusy}
+          onClick={() => runAction("restoring", onRestore)}
+        >
+          <RotateCcw aria-hidden="true" />
+          {status === "restoring" ? "Restoring..." : "Restore"}
+        </button>
+        <button
+          className="trash-delete-forever"
+          type="button"
+          aria-label={`Permanently delete ${kind} ${name}`}
+          disabled={isBusy}
+          onClick={() => runAction("deleting", onDelete)}
+        >
+          <X aria-hidden="true" />
+          {status === "deleting" ? "Deleting..." : "Delete forever"}
+        </button>
+      </div>
+      {error && <p className="trash-row-error">{error}</p>}
     </article>
   );
 }
