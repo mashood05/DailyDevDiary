@@ -19,10 +19,32 @@ body {
 }
 
 .app-root {
+  --editor-title-size: 28px;
+  --editor-body-size: 13px;
+  --editor-step-title-size: 13px;
+  --editor-command-size: 12px;
+  --editor-explanation-size: 12px;
+
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow: hidden;
+}
+
+.editor-font-small {
+  --editor-title-size: 24px;
+  --editor-body-size: 12px;
+  --editor-step-title-size: 12px;
+  --editor-command-size: 11px;
+  --editor-explanation-size: 11px;
+}
+
+.editor-font-large {
+  --editor-title-size: 34px;
+  --editor-body-size: 16px;
+  --editor-step-title-size: 16px;
+  --editor-command-size: 15px;
+  --editor-explanation-size: 15px;
 }
 
 .app-shell {
@@ -1032,6 +1054,36 @@ button {
   box-shadow: 0 3px 8px rgb(20 100 217 / 18%);
 }
 
+.editor-font-setting {
+  display: grid;
+  justify-items: end;
+  gap: 10px;
+}
+
+.editor-font-preview {
+  width: 100%;
+  min-width: 220px;
+  padding: 10px 12px;
+  border: 1px dashed #cdd9e7;
+  border-radius: 8px;
+  background: #f8fbff;
+  color: #263244;
+  font-weight: 650;
+  text-align: left;
+}
+
+.editor-font-preview.preview-small {
+  font-size: 12px;
+}
+
+.editor-font-preview.preview-medium {
+  font-size: 15px;
+}
+
+.editor-font-preview.preview-large {
+  font-size: 20px;
+}
+
 .home-summary-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1523,17 +1575,9 @@ button {
 
 .note-title-input {
   padding: 6px 0;
-  font-size: 28px !important;
+  font-size: var(--editor-title-size) !important;
   font-weight: 680 !important;
   letter-spacing: -0.6px;
-}
-
-.editor-font-small .note-title-input {
-  font-size: 24px !important;
-}
-
-.editor-font-large .note-title-input {
-  font-size: 32px !important;
 }
 
 .note-description-input {
@@ -1541,22 +1585,8 @@ button {
   margin-top: 2px;
   padding: 6px 0;
   color: #667387 !important;
-  font-size: 13px !important;
+  font-size: var(--editor-body-size) !important;
   line-height: 1.6;
-}
-
-.editor-font-small .note-description-input,
-.editor-font-small .step-heading input,
-.editor-font-small .command-input-wrap textarea,
-.editor-font-small .step-explanation-input {
-  font-size: 12px !important;
-}
-
-.editor-font-large .note-description-input,
-.editor-font-large .step-heading input,
-.editor-font-large .command-input-wrap textarea,
-.editor-font-large .step-explanation-input {
-  font-size: 15px !important;
 }
 
 .steps-heading {
@@ -1610,7 +1640,7 @@ button {
 .step-heading input {
   min-width: 0;
   flex: 1;
-  font-size: 13px;
+  font-size: var(--editor-step-title-size);
   font-weight: 650;
 }
 
@@ -1672,7 +1702,7 @@ button {
   min-height: 44px;
   color: #e6edf3;
   font-family: inherit;
-  font-size: 12px;
+  font-size: var(--editor-command-size);
   line-height: 1.5;
 }
 
@@ -1684,7 +1714,7 @@ button {
   min-height: 42px;
   padding: 10px 12px !important;
   color: #667387 !important;
-  font-size: 11px !important;
+  font-size: var(--editor-explanation-size) !important;
   line-height: 1.5;
 }
 
@@ -1843,6 +1873,7 @@ button {
 .app-theme-dark .trash-groups section,
 .app-theme-dark .trash-row,
 .app-theme-dark .settings-card,
+.app-theme-dark .editor-font-preview,
 .app-theme-dark .step-card,
 .app-theme-dark .command-input-wrap,
 .app-theme-dark .screenshot-dropzone,
@@ -1966,6 +1997,7 @@ button {
   .app-theme-system .trash-groups section,
   .app-theme-system .trash-row,
   .app-theme-system .settings-card,
+  .app-theme-system .editor-font-preview,
   .app-theme-system .step-card,
   .app-theme-system .command-input-wrap,
   .app-theme-system .screenshot-dropzone,

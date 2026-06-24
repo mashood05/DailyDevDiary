@@ -74,12 +74,17 @@ export function SettingsPage({ preferences, onChange }: SettingsPageProps) {
           title="Editor font size"
           description="Adjust the writing area to match your reading comfort."
         >
-          <SegmentedControl
-            label="Editor font size"
-            options={editorFontOptions}
-            value={preferences.editorFontSize}
-            onChange={(editorFontSize) => onChange({ ...preferences, editorFontSize })}
-          />
+          <div className="editor-font-setting">
+            <SegmentedControl
+              label="Editor font size"
+              options={editorFontOptions}
+              value={preferences.editorFontSize}
+              onChange={(editorFontSize) => onChange({ ...preferences, editorFontSize })}
+            />
+            <div className={`editor-font-preview preview-${preferences.editorFontSize}`}>
+              Preview text
+            </div>
+          </div>
         </PreferenceCard>
       </div>
     </section>
