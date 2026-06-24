@@ -1331,6 +1331,9 @@ button {
   color: #ffffff;
   font-size: 12px;
   font-weight: 600;
+  -webkit-app-region: no-drag;
+  position: relative;
+  z-index: 1;
 }
 
 .new-note-button {

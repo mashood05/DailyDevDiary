@@ -7,7 +7,7 @@ type CollectionWorkspaceProps = {
   notes: Note[];
   selectedNote: Note | null;
   saveStatus: "Saved" | "Saving...";
-  onCreateNote: () => Promise<void>;
+  onCreateNote: (collectionId: string) => Promise<void>;
   onSelectNote: (id: string) => void;
   onChangeNote: (note: Note) => void;
   onDeleteNote: (id: string) => Promise<void>;
@@ -51,7 +51,11 @@ export function CollectionWorkspace({
             <span>{notes.length} {notes.length === 1 ? "note" : "notes"}</span>
           </div>
         </div>
-        <button className="new-note-button" type="button" onClick={onCreateNote}>
+        <button
+          className="new-note-button"
+          type="button"
+          onClick={() => onCreateNote(collection.id)}
+        >
           <Plus aria-hidden="true" />
           New Note
         </button>
@@ -111,7 +115,7 @@ export function CollectionWorkspace({
               <FilePlus2 aria-hidden="true" />
               <h3>Create your first note</h3>
               <p>Your note will open here as an editable page.</p>
-              <button type="button" onClick={onCreateNote}>
+              <button type="button" onClick={() => onCreateNote(collection.id)}>
                 <Plus aria-hidden="true" />
                 New Note
               </button>

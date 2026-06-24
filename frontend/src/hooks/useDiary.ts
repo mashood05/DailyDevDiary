@@ -72,11 +72,12 @@ export function useDiary() {
     setSelectedNoteId(notes.find((note) => note.collectionId === id)?.id ?? null);
   }
 
-  async function createNote() {
-    if (!selectedCollectionId) return;
+  async function createNote(collectionId = selectedCollectionId) {
+    if (!collectionId) return;
 
-    const note = await repository.createNote(selectedCollectionId);
+    const note = await repository.createNote(collectionId);
     setNotes(await repository.getNotes());
+    setSelectedCollectionId(collectionId);
     setSelectedNoteId(note.id);
     setSaveStatus("Saved");
   }
