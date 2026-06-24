@@ -1,10 +1,12 @@
 import { AllNotesPage } from "./all-notes/AllNotesPage";
 import { CommandsPage } from "./commands/CommandsPage";
 import { HomePage } from "./home/HomePage";
+import { SettingsPage } from "./settings/SettingsPage";
 import { SnapshotsPage } from "./snapshots/SnapshotsPage";
 import { TrashPage } from "./trash/TrashPage";
 import type { Collection, Note } from "../data/diaryTypes";
 import type { FeatureKey } from "./types";
+import type { AppPreferences } from "./settings/settingsTypes";
 
 type FeatureRouterProps = {
   feature: FeatureKey;
@@ -17,6 +19,8 @@ type FeatureRouterProps = {
   onPermanentlyDeleteCollection: (id: string) => Promise<void>;
   onRestoreNote: (id: string) => Promise<void>;
   onPermanentlyDeleteNote: (id: string) => Promise<void>;
+  preferences: AppPreferences;
+  onChangePreferences: (preferences: AppPreferences) => void;
 };
 
 export function FeatureRouter({
@@ -30,6 +34,8 @@ export function FeatureRouter({
   onPermanentlyDeleteCollection,
   onRestoreNote,
   onPermanentlyDeleteNote,
+  preferences,
+  onChangePreferences,
 }: FeatureRouterProps) {
   switch (feature) {
     case "all-notes":
@@ -53,6 +59,13 @@ export function FeatureRouter({
           onDeleteCollection={onPermanentlyDeleteCollection}
           onRestoreNote={onRestoreNote}
           onDeleteNote={onPermanentlyDeleteNote}
+        />
+      );
+    case "settings":
+      return (
+        <SettingsPage
+          preferences={preferences}
+          onChange={onChangePreferences}
         />
       );
     default:

@@ -235,10 +235,14 @@ export function Sidebar({
         </section>
       </div>
 
-      <div className="settings-item">
+      <button
+        className={`settings-item${activeFeature === "settings" ? " active" : ""}`}
+        type="button"
+        onClick={() => onSelectFeature("settings")}
+      >
         <Settings aria-hidden="true" />
         <span>Settings</span>
-      </div>
+      </button>
     </aside>
   );
 }

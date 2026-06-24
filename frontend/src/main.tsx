@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Minus, PanelLeftClose, PanelLeftOpen, Square, X } from "lucide-react";
 import { CollectionWorkspace } from "./CollectionWorkspace";
 import { FeatureRouter } from "./features/FeatureRouter";
+import { defaultPreferences, type AppPreferences } from "./features/settings/settingsTypes";
 import type { FeatureKey } from "./features/types";
 import { Sidebar } from "./Sidebar";
 import { useDiary } from "./hooks/useDiary";
@@ -11,9 +12,24 @@ import appLogo from "./assets/images/logo.png";
 import "./style.css";
 
 const isTauri = "__TAURI_INTERNALS__" in window;
+const preferencesKey = "daily-dev-diary-preferences";
+
+function readPreferences(): AppPreferences {
+  try {
+    const stored = window.localStorage.getItem(preferencesKey);
+    if (!stored) return defaultPreferences;
+
+    return { ...defaultPreferences, ...JSON.parse(stored) };
+  } catch {
+    return defaultPreferences;
+  }
+}
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [preferences, setPreferences] = useState<AppPreferences>(() => readPreferences());
+  const [isSidebarOpen, setIsSidebarOpen] = useState(
+    () => preferences.sidebarDefault === "open",
+  );
   const [activeFeature, setActiveFeature] = useState<FeatureKey | null>("home");
   const {
     collections,
@@ -61,8 +77,19 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    window.localStorage.setItem(preferencesKey, JSON.stringify(preferences));
+  }, [preferences]);
+
+  function changePreferences(nextPreferences: AppPreferences) {
+    setPreferences(nextPreferences);
+    setIsSidebarOpen(nextPreferences.sidebarDefault === "open");
+  }
+
   return (
-    <div className="app-root">
+    <div
+      className={`app-root app-theme-${preferences.theme} editor-font-${preferences.editorFontSize}`}
+    >
       <header className="title-bar" data-tauri-drag-region>
         <button
           className="title-bar-toggle"
@@ -146,6 +173,8 @@ function App() {
               onPermanentlyDeleteCollection={permanentlyDeleteCollection}
               onRestoreNote={restoreNote}
               onPermanentlyDeleteNote={permanentlyDeleteNote}
+              preferences={preferences}
+              onChangePreferences={changePreferences}
             />
           ) : (
             <CollectionWorkspace

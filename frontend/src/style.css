@@ -440,11 +440,21 @@ body {
 }
 
 .settings-item {
+  width: 100%;
   height: 48px;
   flex: 0 0 48px;
   gap: 11px;
   padding: 0 18px;
+  border: 0;
   border-top: 1px solid #e6ebf2;
+  background: transparent;
+  text-align: left;
+}
+
+.settings-item.active {
+  background: #eaf2ff;
+  color: #1260d6;
+  font-weight: 600;
 }
 
 button {
@@ -929,6 +939,97 @@ button {
 .feature-page-empty p {
   margin: 0;
   font-size: 11px;
+}
+
+.settings-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.settings-card {
+  display: flex;
+  min-height: 96px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgb(15 23 42 / 3%);
+}
+
+.settings-card-copy {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 14px;
+}
+
+.settings-card-copy > span {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 10px;
+  background: #eef5ff;
+  color: #1464d9;
+}
+
+.settings-card-copy svg {
+  width: 19px;
+  height: 19px;
+}
+
+.settings-card h3,
+.settings-card p {
+  margin: 0;
+}
+
+.settings-card h3 {
+  color: #202b3b;
+  font-size: 13px;
+  font-weight: 680;
+}
+
+.settings-card p {
+  margin-top: 5px;
+  color: #7d8999;
+  font-size: 11px;
+}
+
+.segmented-control {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid #dfe6ef;
+  border-radius: 10px;
+  background: #f5f7fb;
+}
+
+.segmented-control button {
+  min-width: 72px;
+  height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #607086;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.segmented-control button:hover {
+  background: #edf2f8;
+}
+
+.segmented-control button.selected {
+  background: #1464d9;
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgb(20 100 217 / 18%);
 }
 
 .home-summary-grid {
@@ -1427,6 +1528,14 @@ button {
   letter-spacing: -0.6px;
 }
 
+.editor-font-small .note-title-input {
+  font-size: 24px !important;
+}
+
+.editor-font-large .note-title-input {
+  font-size: 32px !important;
+}
+
 .note-description-input {
   min-height: 40px;
   margin-top: 2px;
@@ -1434,6 +1543,20 @@ button {
   color: #667387 !important;
   font-size: 13px !important;
   line-height: 1.6;
+}
+
+.editor-font-small .note-description-input,
+.editor-font-small .step-heading input,
+.editor-font-small .command-input-wrap textarea,
+.editor-font-small .step-explanation-input {
+  font-size: 12px !important;
+}
+
+.editor-font-large .note-description-input,
+.editor-font-large .step-heading input,
+.editor-font-large .command-input-wrap textarea,
+.editor-font-large .step-explanation-input {
+  font-size: 15px !important;
 }
 
 .steps-heading {
@@ -1687,4 +1810,250 @@ button {
 .add-step-button svg {
   width: 14px;
   height: 14px;
+}
+
+.app-theme-dark {
+  background: #0f172a;
+  color: #e5edf7;
+}
+
+.app-theme-dark .app-shell,
+.app-theme-dark .content,
+.app-theme-dark .workspace-header,
+.app-theme-dark .note-page,
+.app-theme-dark .feature-page,
+.app-theme-dark .note-editor input,
+.app-theme-dark .note-editor textarea {
+  background: #0f172a;
+  color: #e5edf7;
+}
+
+.app-theme-dark .title-bar,
+.app-theme-dark .sidebar,
+.app-theme-dark .notes-panel,
+.app-theme-dark .collection-workspace {
+  background: #111c2f;
+}
+
+.app-theme-dark .search-box,
+.app-theme-dark .collection-form,
+.app-theme-dark .home-summary-card,
+.app-theme-dark .home-recent-section,
+.app-theme-dark .feature-list-item,
+.app-theme-dark .trash-groups section,
+.app-theme-dark .trash-row,
+.app-theme-dark .settings-card,
+.app-theme-dark .step-card,
+.app-theme-dark .command-input-wrap,
+.app-theme-dark .screenshot-dropzone,
+.app-theme-dark .save-status {
+  border-color: #27364d;
+  background: #17233a;
+  color: #d8e2ef;
+}
+
+.app-theme-dark .workspace-header,
+.app-theme-dark .sidebar,
+.app-theme-dark .settings-item,
+.app-theme-dark .sidebar-section,
+.app-theme-dark .notes-panel,
+.app-theme-dark .feature-page-heading,
+.app-theme-dark .home-section-heading,
+.app-theme-dark .step-explanation-input,
+.app-theme-dark .attach-screenshot-button,
+.app-theme-dark .add-step-button {
+  border-color: #27364d !important;
+}
+
+.app-theme-dark .menu-item,
+.app-theme-dark .collection-item,
+.app-theme-dark .settings-item,
+.app-theme-dark .title-bar-name,
+.app-theme-dark button,
+.app-theme-dark .workspace-header h2,
+.app-theme-dark .feature-page-heading h2,
+.app-theme-dark .settings-card h3,
+.app-theme-dark .home-summary-card strong,
+.app-theme-dark .workspace-note-select,
+.app-theme-dark .note-title-input {
+  color: #e7eef8;
+}
+
+.app-theme-dark .menu-item.active,
+.app-theme-dark .settings-item.active,
+.app-theme-dark .collection-item.selected,
+.app-theme-dark .workspace-note-item:hover,
+.app-theme-dark .workspace-note-item.selected {
+  background: #1e3a63;
+  color: #8ab7ff;
+}
+
+.app-theme-dark .search-box input,
+.app-theme-dark .collection-form input {
+  color: #e7eef8;
+}
+
+.app-theme-dark .feature-page-heading p,
+.app-theme-dark .settings-card p,
+.app-theme-dark .workspace-header span,
+.app-theme-dark .note-description-input,
+.app-theme-dark .step-explanation-input,
+.app-theme-dark .notes-empty,
+.app-theme-dark .collections-empty,
+.app-theme-dark .recent-empty,
+.app-theme-dark .workspace-note-select small,
+.app-theme-dark .home-summary-card small {
+  color: #98a8bd !important;
+}
+
+.app-theme-dark .segmented-control {
+  border-color: #2b3a53;
+  background: #101a2c;
+}
+
+.app-theme-dark .segmented-control button {
+  color: #a9b8ca;
+}
+
+.app-theme-dark .segmented-control button:hover,
+.app-theme-dark .title-bar-toggle:hover,
+.app-theme-dark .title-bar-controls button:hover,
+.app-theme-dark .attach-screenshot-button:hover,
+.app-theme-dark .add-step-button:hover {
+  background: #22324a;
+}
+
+.app-theme-dark .segmented-control button.selected {
+  background: #2f7df0;
+  color: #ffffff;
+}
+
+.app-theme-dark .add-step-button,
+.app-theme-dark .attach-screenshot-button {
+  background: #17233a;
+  color: #a9b8ca;
+}
+
+@media (prefers-color-scheme: dark) {
+  .app-theme-system {
+    background: #0f172a;
+    color: #e5edf7;
+  }
+
+  .app-theme-system .app-shell,
+  .app-theme-system .content,
+  .app-theme-system .workspace-header,
+  .app-theme-system .note-page,
+  .app-theme-system .feature-page,
+  .app-theme-system .note-editor input,
+  .app-theme-system .note-editor textarea {
+    background: #0f172a;
+    color: #e5edf7;
+  }
+
+  .app-theme-system .title-bar,
+  .app-theme-system .sidebar,
+  .app-theme-system .notes-panel,
+  .app-theme-system .collection-workspace {
+    background: #111c2f;
+  }
+
+  .app-theme-system .search-box,
+  .app-theme-system .collection-form,
+  .app-theme-system .home-summary-card,
+  .app-theme-system .home-recent-section,
+  .app-theme-system .feature-list-item,
+  .app-theme-system .trash-groups section,
+  .app-theme-system .trash-row,
+  .app-theme-system .settings-card,
+  .app-theme-system .step-card,
+  .app-theme-system .command-input-wrap,
+  .app-theme-system .screenshot-dropzone,
+  .app-theme-system .save-status {
+    border-color: #27364d;
+    background: #17233a;
+    color: #d8e2ef;
+  }
+
+  .app-theme-system .workspace-header,
+  .app-theme-system .sidebar,
+  .app-theme-system .settings-item,
+  .app-theme-system .sidebar-section,
+  .app-theme-system .notes-panel,
+  .app-theme-system .feature-page-heading,
+  .app-theme-system .home-section-heading,
+  .app-theme-system .step-explanation-input,
+  .app-theme-system .attach-screenshot-button,
+  .app-theme-system .add-step-button {
+    border-color: #27364d !important;
+  }
+
+  .app-theme-system .menu-item,
+  .app-theme-system .collection-item,
+  .app-theme-system .settings-item,
+  .app-theme-system .title-bar-name,
+  .app-theme-system button,
+  .app-theme-system .workspace-header h2,
+  .app-theme-system .feature-page-heading h2,
+  .app-theme-system .settings-card h3,
+  .app-theme-system .home-summary-card strong,
+  .app-theme-system .workspace-note-select,
+  .app-theme-system .note-title-input {
+    color: #e7eef8;
+  }
+
+  .app-theme-system .menu-item.active,
+  .app-theme-system .settings-item.active,
+  .app-theme-system .collection-item.selected,
+  .app-theme-system .workspace-note-item:hover,
+  .app-theme-system .workspace-note-item.selected {
+    background: #1e3a63;
+    color: #8ab7ff;
+  }
+
+  .app-theme-system .search-box input,
+  .app-theme-system .collection-form input {
+    color: #e7eef8;
+  }
+
+  .app-theme-system .feature-page-heading p,
+  .app-theme-system .settings-card p,
+  .app-theme-system .workspace-header span,
+  .app-theme-system .note-description-input,
+  .app-theme-system .step-explanation-input,
+  .app-theme-system .notes-empty,
+  .app-theme-system .collections-empty,
+  .app-theme-system .recent-empty,
+  .app-theme-system .workspace-note-select small,
+  .app-theme-system .home-summary-card small {
+    color: #98a8bd !important;
+  }
+
+  .app-theme-system .segmented-control {
+    border-color: #2b3a53;
+    background: #101a2c;
+  }
+
+  .app-theme-system .segmented-control button {
+    color: #a9b8ca;
+  }
+
+  .app-theme-system .segmented-control button:hover,
+  .app-theme-system .title-bar-toggle:hover,
+  .app-theme-system .title-bar-controls button:hover,
+  .app-theme-system .attach-screenshot-button:hover,
+  .app-theme-system .add-step-button:hover {
+    background: #22324a;
+  }
+
+  .app-theme-system .segmented-control button.selected {
+    background: #2f7df0;
+    color: #ffffff;
+  }
+
+  .app-theme-system .add-step-button,
+  .app-theme-system .attach-screenshot-button {
+    background: #17233a;
+    color: #a9b8ca;
+  }
 }
