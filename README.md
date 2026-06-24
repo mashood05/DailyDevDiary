@@ -23,6 +23,8 @@ DailyDevDiary is a lightweight desktop app for keeping the technical knowledge y
 
 Instead of solving the same problem from scratch, open your diary and pick up exactly where you left off.
 
+![DailyDevDiary screenshot](docs/screenshot.png)
+
 ## Highlights
 
 | Feature | Description |
