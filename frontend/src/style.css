@@ -2138,6 +2138,96 @@ button {
   color: #ff9b9b;
 }
 
+.app-theme-dark .all-notes-list > button,
+.app-theme-dark .home-recent-list button,
+.app-theme-dark .command-record,
+.app-theme-dark .snapshot-record {
+  border-color: #27364d;
+  background: #17233a;
+  color: #d8e2ef;
+}
+
+.app-theme-dark .all-notes-list > button:hover,
+.app-theme-dark .home-recent-list button:hover {
+  border-color: #385986;
+  background: #20314f;
+}
+
+.app-theme-dark .all-notes-icon,
+.app-theme-dark .home-summary-card > span,
+.app-theme-dark .feature-page-heading > span,
+.app-theme-dark .snapshot-record > button,
+.app-theme-dark .command-record-heading button {
+  background: #dce9ff;
+  color: #2f6ee8;
+}
+
+.app-theme-dark .all-notes-content > strong,
+.app-theme-dark .home-recent-list strong,
+.app-theme-dark .command-record-heading strong,
+.app-theme-dark .snapshot-record strong {
+  color: #f2f7ff;
+}
+
+.app-theme-dark .all-notes-content > small,
+.app-theme-dark .all-notes-content time,
+.app-theme-dark .home-recent-list small,
+.app-theme-dark .home-recent-list time,
+.app-theme-dark .command-record-heading small,
+.app-theme-dark .snapshot-record small,
+.app-theme-dark .snapshot-record span {
+  color: #9fb0c7;
+}
+
+.app-theme-dark .all-notes-content em {
+  background: #213554;
+  color: #c7d8ef;
+}
+
+.app-theme-dark .all-notes-steps {
+  color: #9fb0c7;
+}
+
+.app-theme-dark .home-section-heading {
+  background: #17233a;
+}
+
+.app-theme-dark .home-section-heading h3 {
+  color: #f2f7ff;
+}
+
+.app-theme-dark .home-section-heading span {
+  background: #dce9ff;
+  color: #1f4fa7;
+}
+
+.app-theme-dark .command-record-heading {
+  background: #17233a;
+}
+
+.app-theme-dark .command-record-code {
+  border-color: #27364d;
+  background: #0d1627;
+}
+
+.app-theme-dark .command-record-code code {
+  color: #edf6ff;
+}
+
+.app-theme-dark .command-record-code > span {
+  color: #42e183;
+}
+
+.app-theme-dark .command-record-code button {
+  border-color: #314665;
+  background: #1b2b46;
+  color: #eef5ff;
+}
+
+.app-theme-dark .command-record-code button:hover {
+  background: #2b4268;
+}
+
 @media (prefers-color-scheme: dark) {
   .app-theme-system {
     background: #0f172a;
@@ -2418,5 +2508,95 @@ button {
 
   .app-theme-system .trash-row-error {
     color: #ff9b9b;
+  }
+
+  .app-theme-system .all-notes-list > button,
+  .app-theme-system .home-recent-list button,
+  .app-theme-system .command-record,
+  .app-theme-system .snapshot-record {
+    border-color: #27364d;
+    background: #17233a;
+    color: #d8e2ef;
+  }
+
+  .app-theme-system .all-notes-list > button:hover,
+  .app-theme-system .home-recent-list button:hover {
+    border-color: #385986;
+    background: #20314f;
+  }
+
+  .app-theme-system .all-notes-icon,
+  .app-theme-system .home-summary-card > span,
+  .app-theme-system .feature-page-heading > span,
+  .app-theme-system .snapshot-record > button,
+  .app-theme-system .command-record-heading button {
+    background: #dce9ff;
+    color: #2f6ee8;
+  }
+
+  .app-theme-system .all-notes-content > strong,
+  .app-theme-system .home-recent-list strong,
+  .app-theme-system .command-record-heading strong,
+  .app-theme-system .snapshot-record strong {
+    color: #f2f7ff;
+  }
+
+  .app-theme-system .all-notes-content > small,
+  .app-theme-system .all-notes-content time,
+  .app-theme-system .home-recent-list small,
+  .app-theme-system .home-recent-list time,
+  .app-theme-system .command-record-heading small,
+  .app-theme-system .snapshot-record small,
+  .app-theme-system .snapshot-record span {
+    color: #9fb0c7;
+  }
+
+  .app-theme-system .all-notes-content em {
+    background: #213554;
+    color: #c7d8ef;
+  }
+
+  .app-theme-system .all-notes-steps {
+    color: #9fb0c7;
+  }
+
+  .app-theme-system .home-section-heading {
+    background: #17233a;
+  }
+
+  .app-theme-system .home-section-heading h3 {
+    color: #f2f7ff;
+  }
+
+  .app-theme-system .home-section-heading span {
+    background: #dce9ff;
+    color: #1f4fa7;
+  }
+
+  .app-theme-system .command-record-heading {
+    background: #17233a;
+  }
+
+  .app-theme-system .command-record-code {
+    border-color: #27364d;
+    background: #0d1627;
+  }
+
+  .app-theme-system .command-record-code code {
+    color: #edf6ff;
+  }
+
+  .app-theme-system .command-record-code > span {
+    color: #42e183;
+  }
+
+  .app-theme-system .command-record-code button {
+    border-color: #314665;
+    background: #1b2b46;
+    color: #eef5ff;
+  }
+
+  .app-theme-system .command-record-code button:hover {
+    background: #2b4268;
   }
 }
